@@ -39,12 +39,16 @@ describe("Display Components", () => {
     const wrapper = rtl.render(<Display locked={true} closed={true} />);
     expect(wrapper.getByText('Locked')).toHaveClass('red-led')
     expect(wrapper.getByText('Closed')).toHaveClass('red-led')
+    expect(wrapper.getByText('Locked')).not.toHaveClass('green-led')
+    expect(wrapper.getByText('Closed')).not.toHaveClass('green-led')
   });
 
   it("Displays green-led when unlocked/open", () => {
     const wrapper = rtl.render(<Display />);
     expect(wrapper.getByText('Unlocked')).toHaveClass('green-led')
     expect(wrapper.getByText('Open')).toHaveClass('green-led')
+    expect(wrapper.getByText('Unlocked')).not.toHaveClass('red-led')
+    expect(wrapper.getByText('Open')).not.toHaveClass('red-led')
   });
 
 });
